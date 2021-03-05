@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import SnackOrBoozeApi from './Api';
@@ -60,34 +59,32 @@ function App() {
 
 	return (
 		<div className="App">
-			<BrowserRouter>
-				<NavBar />
-				<main>
-					<Switch>
-						<Route exact path="/">
-							<Home snacks={snacks} drinks={drinks} />
-						</Route>
-						<Route exact path="/snacks">
-							<Menu items={snacks} title="Snacks" remove={deleteItem} />
-						</Route>
-						<Route path="/snacks/:id">
-							<Item items={snacks} cantFind="/snacks" backTo="Snacks" />
-						</Route>
-						<Route exact path="/drinks">
-							<Menu items={drinks} title="Drinks" remove={deleteItem} />
-						</Route>
-						<Route exact path="/drinks/:id">
-							<Item items={drinks} cantFind="/drinks" backTo="Drinks" />
-						</Route>
-						<Route exact path="/new">
-							<NewItemForm add={addNewItem} toggleLoad={setIsLoading} />
-						</Route>
-						<Route>
-							<h2 className="App-notFound">Hmmm. I can't seem to find what you want.</h2>
-						</Route>
-					</Switch>
-				</main>
-			</BrowserRouter>
+			<NavBar />
+			<main>
+				<Switch>
+					<Route exact path="/">
+						<Home snacks={snacks} drinks={drinks} />
+					</Route>
+					<Route exact path="/snacks">
+						<Menu items={snacks} title="Snacks" remove={deleteItem} />
+					</Route>
+					<Route path="/snacks/:id">
+						<Item items={snacks} cantFind="/snacks" backTo="Snacks" />
+					</Route>
+					<Route exact path="/drinks">
+						<Menu items={drinks} title="Drinks" remove={deleteItem} />
+					</Route>
+					<Route exact path="/drinks/:id">
+						<Item items={drinks} cantFind="/drinks" backTo="Drinks" />
+					</Route>
+					<Route exact path="/new">
+						<NewItemForm add={addNewItem} toggleLoad={setIsLoading} />
+					</Route>
+					<Route>
+						<h2 className="App-notFound">Hmmm. I can't seem to find what you want.</h2>
+					</Route>
+				</Switch>
+			</main>
 		</div>
 	);
 }
