@@ -1,38 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./FoodMenu.css";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  ListGroup,
-  ListGroupItem
-} from "reactstrap";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './FoodMenu.css';
+import { Card, CardBody, CardTitle, CardText, ListGroup, ListGroupItem } from 'reactstrap';
 
-function FoodMenu({ snacks }) {
-  return (
-    <section className="col-md-4">
-      <Card>
-        <CardBody>
-          <CardTitle className="font-weight-bold text-center">
-            Food Menu
-          </CardTitle>
-          <CardText>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </CardText>
-          <ListGroup>
-            {snacks.map(snack => (
-              <Link to={`/snacks/${snack.id}`} key={snack.id}>
-                <ListGroupItem>{snack.name}</ListGroupItem>
-              </Link>
-            ))}
-          </ListGroup>
-        </CardBody>
-      </Card>
-    </section>
-  );
+function Menu({ items, title, remove }) {
+	// taking in title as "snacks" or "drinks" depending on which route
+	return (
+		<section className="col-md-4">
+			<Card>
+				<CardBody>
+					<CardTitle className="font-weight-bold text-center">{title} Menu</CardTitle>
+					<CardText style={{ textAlign: 'center' }}>
+						Explore all of our delish {title.toLowerCase()} below!
+					</CardText>
+					<ListGroup>
+						{items.map((item) => {
+							return (
+								<div className="Item" key={item.id}>
+									<Link to={`/${title}/${item.id}`}>
+										<ListGroupItem>{item.name}</ListGroupItem>
+									</Link>
+									{/* if an item was added, present a button that can delete that item */}
+									{item.userAdd && <button onClick={() => remove(item)}>Delete</button>}
+								</div>
+							);
+						})}
+					</ListGroup>
+				</CardBody>
+			</Card>
+		</section>
+	);
 }
 
-export default FoodMenu;
+export default Menu;
