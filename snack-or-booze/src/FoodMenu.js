@@ -17,7 +17,7 @@ function Menu({ items, title, remove }) {
 						{items.map((item) => {
 							return (
 								<div className="Item" key={item.id}>
-									<Link to={`/${title}/${item.id}`}>
+									<Link data-testId={`link-${item.id}`} to={`/${title.toLowerCase()}/${item.id}`}>
 										<ListGroupItem>{item.name}</ListGroupItem>
 									</Link>
 									{/* if an item was added, present a button that can delete that item */}

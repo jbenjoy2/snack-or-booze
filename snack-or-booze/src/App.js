@@ -69,13 +69,13 @@ function App() {
 						<Menu items={snacks} title="Snacks" remove={deleteItem} />
 					</Route>
 					<Route path="/snacks/:id">
-						<Item items={snacks} cantFind="/snacks" backTo="Snacks" />
+						<Item items={snacks} cantFind="/snacks" backTo="snacks" />
 					</Route>
 					<Route exact path="/drinks">
 						<Menu items={drinks} title="Drinks" remove={deleteItem} />
 					</Route>
-					<Route exact path="/drinks/:id">
-						<Item items={drinks} cantFind="/drinks" backTo="Drinks" />
+					<Route exact path="/DRINKS/:id">
+						<Item items={drinks} cantFind="/drinks" backTo="drinks" />
 					</Route>
 					<Route exact path="/new">
 						<NewItemForm add={addNewItem} toggleLoad={setIsLoading} />

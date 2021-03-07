@@ -3,7 +3,7 @@ import { Redirect, useParams, Link } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
 function Item({ items, cantFind, backTo }) {
-	const { id } = useParams();
+	const { id } = useParams() || 'hummus';
 
 	let item = items.find((item) => item.id === id);
 	if (!item) return <Redirect to={cantFind} />;
